@@ -1,0 +1,14 @@
+{
+  "name": "devopera-dogae",
+  "version": "0.9.0",
+  "author": "(c) Alex Stanhope, Devopera.com",
+  "summary": "Google App Engine SDK installation and configuration module",
+  "license": "Apache License, Version 2.0",
+  "source": "https://github.com/devopera/puppet-dogae",
+  "issues_url": "https://github.com/devopera/puppet-dogae/issues",
+  "description": "",
+  "project_page": "http://devopera.com/module/dogae",
+  "dependencies": [
+    {"name":"devopera/docommon","version_requirement":"0.9.3"},
+  ]
+}
