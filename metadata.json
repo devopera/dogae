@@ -9,6 +9,6 @@
   "description": "",
   "project_page": "http://devopera.com/module/dogae",
   "dependencies": [
-    {"name":"devopera/docommon","version_requirement":"0.9.3"},
+    {"name":"devopera/docommon","version_requirement":"0.9.3"}
   ]
 }
