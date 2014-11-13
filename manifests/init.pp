@@ -12,7 +12,7 @@ class dogae (
   $download_ext = '.zip',
   # $command_expand = 'tar -xzvf',
   $command_expand = 'unzip',
-  $version = '1.9.10',
+  $version = '1.9.15',
 
   # place to locate the SDK folder
   $target_dir = undef,
