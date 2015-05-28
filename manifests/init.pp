@@ -12,7 +12,7 @@ class dogae (
   $download_ext = '.zip',
   # $command_expand = 'tar -xzvf',
   $command_expand = 'unzip',
-  $version = '1.9.20',
+  $version = '1.9.21',
 
   # place to locate the SDK folder
   $target_dir = undef,
@@ -30,15 +30,11 @@ class dogae (
   }
 
   # fetch archive from Google
-  wget::fetch { 'dogae_fetch_sdk':
-    source      =>  "${download_root}${download_leaf}${download_vbridge}${version}${download_ext}",
-    destination => "${real_target_dir}/${download_leaf}${download_vbridge}${version}${download_ext}",
-    user        => $user,
-  }->
-  # unpack
-  exec { 'dogae_unpack':
-    path    => '/bin/:/usr/bin:/sbin:/usr/sbin',
-    command => "${command_expand} ${real_target_dir}/${download_leaf}${download_vbridge}${version}${download_ext}",
+  $source = "${download_root}${download_leaf}${download_vbridge}${version}${download_ext}"
+  $destination = "${real_target_dir}/${download_leaf}${download_vbridge}${version}${download_ext}"
+  exec { 'dogae_fetch_sdk':
+    path    => '/bin:/sbin:/usr/bin:/usr/sbin',
+    command => "wget -O ${destination} ${source} && ${command_expand} ${destination}",
     cwd     => $real_target_dir,
     user    => $user,
     creates => "${real_target_dir}/${download_leaf}",
@@ -46,8 +42,7 @@ class dogae (
   # delete downloaded archive and mysterious .wgetrc
   exec { 'dogae_cleanup':
     path    => '/bin/:/usr/bin:/sbin:/usr/sbin',
-    command => "rm ${real_target_dir}/${download_leaf}${download_vbridge}${version}${download_ext}; rm ${real_target_dir}/${download_leaf}${download_vbridge}${version}${download_ext}.wgetrc",
+    command => "rm -rf ${destination}; rm -rf ${destination}.wgetrc",
     cwd     => $real_target_dir,
-    user    => $user,
   }
 }
