@@ -5,6 +5,9 @@
 Changelog
 ---------
 
+2015-07-15
+
+  * Fed up of changing the version number every time Google releases a new version, there's now a custom fact that parses the Google Cloud Platform AppEngine download page for the latest
 
 Usage
 -----
