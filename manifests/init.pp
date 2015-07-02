@@ -36,6 +36,8 @@ class dogae (
     default => $version,
   }
 
+  notify { "Downloading Google AppEngine SDK version $::dogae_appengine_version" : }
+
   # fetch archive from Google
   $source = "${download_root}${download_leaf}${download_vbridge}${real_version}${download_ext}"
   $destination = "${real_target_dir}/${download_leaf}${download_vbridge}${real_version}${download_ext}"
